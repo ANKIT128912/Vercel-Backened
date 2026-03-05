@@ -11,19 +11,16 @@ connectDB();
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://frontened-4zs9.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+// Enable CORS
+app.use(cors());
 
 app.use(express.json());
 
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expenseRoutes);
 
+// Test route
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
