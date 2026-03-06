@@ -15,12 +15,15 @@ app.use(
   cors({
     origin: [
       "https://frontened-4zs9.vercel.app",
-      "https://frontened-sigma.vercel.app"
+      "https://frontened-sigma.vercel.app",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
+
+// 👇 ADD THIS LINE
+app.options("*", cors());
 
 app.use(express.json());
 
