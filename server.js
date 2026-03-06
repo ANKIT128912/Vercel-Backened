@@ -11,25 +11,29 @@ connectDB();
 
 const app = express();
 
+// CORS configuration
 app.use(
   cors({
     origin: [
-      "https://frontened-4zs9.vercel.app",
-      "https://frontened-sigma.vercel.app",
+      "https://frontend-4zs9.vercel.app",
+      "https://frontend-sigma.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
 
-// 👇 ADD THIS LINE
+// Handle preflight requests
 app.options("*", cors());
 
+// Middleware
 app.use(express.json());
 
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expenseRoutes);
 
+// Test route
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
