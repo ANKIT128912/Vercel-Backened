@@ -11,22 +11,8 @@ connectDB();
 
 const app = express();
 
-// CORS configuration
-app.use(
-  cors({
-    origin: [
-      "https://frontend-4zs9.vercel.app",
-      "https://frontend-sigma.vercel.app",
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-  })
-);
-
-// Handle preflight requests
-app.options("*", cors());
-
-// Middleware
+// SIMPLE CORS FIX
+app.use(cors());
 app.use(express.json());
 
 // Routes
